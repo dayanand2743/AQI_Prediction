@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <!-- Video Background -->
+  <div class="video-background">
+    <video autoplay muted loop>
+        <source src="/static/video1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-5">Model Performance Metrics</h1>
+                <hr class="my-4">
+                
+                <div class="row">
+                    <div class="col-md-4">
+                        <h2>Decision Tree Metrics</h2>
+    <h3>Accuracy: {{ dt_accuracy }}</h3>
+    <h3>Confusion Matrix:</h3>
+    <p>{{ dt_conf_matrix }}</p>
+    <h3>Classification Report:</h3>
+    <pre>{{ dt_classification_report | safe }}</pre>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>Random Forest Metrics</h2>
+    <h3>Accuracy: {{ rf_accuracy }}</h3>
+    <h3>Confusion Matrix:</h3>
+    <p>{{ rf_conf_matrix }}</p>
+    <h3>Classification Report:</h3>
+    <pre>{{ rf_classification_report | safe }}</pre>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h2>XGBoost Metrics</h2>
+                        <h3>Accuracy: {{ xgb_accuracy }}</h3>
+                        <h3>Confusion Matrix:</h3>
+                        <p>{{ xgb_conf_matrix }}</p>
+                        <h3>Classification Report:</h3>
+                        <pre>{{ xgb_classification_report | safe }}</pre>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-md-12">
+                        <h3 class="mt-5">Decision Tree Classifier - Tree Plot</h3>
+                        <img src="data:image/png;base64,{{ dt_tree_plot }}" alt="Decision Tree Plot" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
